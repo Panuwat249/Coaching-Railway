@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Red Line Timetable · เรียนรู้แบบเห็นภาพ</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf8f6;--cd:#fff;--ink:#231416;--mut:#7d6c6e;--red:#b3121a;--ln:#eadfdc;--sf:#f5ecea;--gd:#c89b3c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f0809;--cd:#1a0f10;--ink:#f4eae7;--mut:#ab9591;--red:#ee4a50;--ln:#351f21;--sf:#251517;--gd:#e0b45a}}
+:root[data-theme="dark"]{--bg:#0f0809;--cd:#1a0f10;--ink:#f4eae7;--mut:#ab9591;--red:#ee4a50;--ln:#351f21;--sf:#251517;--gd:#e0b45a}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 clamp(15px,.35vw + 13.5px,18px)/1.65 Prompt,system-ui,sans-serif;transition:background .3s}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--ln)}
+header b{color:var(--red);white-space:nowrap}header nav{display:flex;gap:6px;overflow-x:auto;flex:1}
+header a{font-size:13px;color:var(--mut);text-decoration:none;padding:3px 12px;border-radius:99px;border:1px solid var(--ln);white-space:nowrap}header a:hover{color:var(--red);border-color:var(--red)}
+#th{width:36px;height:36px;border-radius:50%;border:1px solid var(--ln);background:var(--cd);cursor:pointer;font-size:16px;flex:none}
+.hero{max-width:1120px;margin:auto;padding:44px 16px 0}.hero h1{font-size:clamp(26px,5vw,42px);line-height:1.2;margin:0;font-weight:600}.hero h1 em{font-style:normal;color:var(--red)}.hero p{color:var(--mut);margin:8px 0 0}
+.sec{max-width:1120px;margin:auto;padding:40px 16px 0}h2{font-size:22px;margin:0 0 4px;font-weight:600}h2 i{font-style:normal;color:var(--red);margin-right:8px}
+.sub{color:var(--mut);margin:0 0 14px;font-size:14px}
+.cd{background:var(--cd);border:1px solid var(--ln);border-radius:24px;padding:26px}
+.pair{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+.tg{display:inline-block;font-size:12px;padding:2px 12px;border-radius:99px;background:var(--sf);color:var(--red);margin:0 6px 8px 0}
+.mk{border:1px solid var(--ln);border-radius:16px;overflow-x:auto;margin-top:8px}.mk .mh{background:var(--red);color:#fff;padding:7px 14px;font-size:12.5px}
+.pt{width:100%;border-collapse:collapse}.pt th{width:44px;font-size:20px;font-weight:600;color:var(--red);padding:3px 10px}.pt td{padding:3px 6px;border-top:1px solid var(--ln)}.pt i{display:inline-block;min-width:32px;text-align:center;font-style:normal;font-size:13px}
+.wt{width:100%;border-collapse:collapse;font:12px ui-monospace,Menlo,monospace}.wt th{background:var(--sf);padding:5px 6px;font-weight:500}.wt td{padding:5px 6px;border-top:1px solid var(--ln);text-align:center}
+.bt{font:inherit;font-size:13.5px;border:1px solid var(--ln);background:var(--cd);color:var(--ink);border-radius:99px;padding:8px 20px;cursor:pointer;transition:.2s}.bt.on,.bt:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px;align-items:center}.scr{overflow-x:auto}.scr svg{min-width:600px;display:block;width:100%}#cv{min-width:780px}#al{min-width:560px}#lvs{min-width:620px}
+svg text{fill:var(--ink);font-family:Prompt,sans-serif}.cap{margin:10px 0 0;padding:10px 14px;background:var(--sf);border-radius:14px;font-size:14px;min-height:46px}
+.nb rect,.nb polygon{fill:var(--cd);stroke:var(--red);stroke-width:2}.nb.f rect{fill:var(--red)}.nb.f text{fill:#fff}.nb text{font-size:14px;text-anchor:middle}
+.ar{stroke:var(--red);stroke-width:3;fill:none;marker-end:url(#a)}.fs{transition:opacity .9s}.fs.on rect,.fs.on polygon{stroke:var(--gd);stroke-width:4}.fs small{font-size:12px;fill:var(--mut);text-anchor:middle}
+.gh{fill:none;stroke:var(--ln);stroke-width:2}.pc{fill:none;stroke:var(--red);stroke-width:3.5;stroke-linejoin:round;transition:.3s}.pc.lo{opacity:.2}.pc.hi{stroke:var(--gd);stroke-width:6}
+.pl rect{fill:var(--cd);stroke:var(--gd);rx:9}.pl text{font-size:12px;text-anchor:middle}.br{stroke:var(--gd);stroke-width:2.5;fill:none}
+.rt{font-size:9.5px;font-weight:500;paint-order:stroke;stroke:var(--cd);stroke-width:3px}.bl{animation:bk .55s infinite alternate}@keyframes bk{to{opacity:.1}}
+.sp{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:16px;margin-top:20px}.sc{background:var(--sf);border-radius:18px;padding:16px 18px;font-size:16px}.sc b{color:var(--red);margin-right:6px}.sc div{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}.sc em{font-style:normal;min-width:52px;text-align:center;font-weight:600;font-size:20px}.sb{flex:none;aspect-ratio:1;padding:0;width:42px;height:42px;border-radius:50%;border:1.5px solid var(--red);background:var(--cd);color:var(--red);cursor:pointer;font:600 22px/1 Prompt,sans-serif}.sb:hover{background:var(--red);color:#fff}
+.rb{display:flex;height:40px;border-radius:12px;overflow:hidden;margin-top:12px;font-size:12px;color:#fff}.rb div{display:flex;align-items:center;justify-content:center;text-align:center;transition:opacity .3s;overflow:hidden;white-space:nowrap}.rb div.lo{opacity:.25}
+.dots{display:grid;gap:4px;margin:18px 0}.dots i{aspect-ratio:1;border-radius:6px;background:var(--red);display:grid;place-items:center;font-style:normal;font-size:var(--f,12px);line-height:1;color:#fff;overflow:hidden;text-align:center}.dots i.l{background:var(--gd);color:#2a1a05}.dots i.c{background:transparent;border:2px dashed var(--mut);color:var(--mut)}.dots.nt i{font-size:0}.lg2{display:flex;flex-wrap:wrap;gap:8px 24px;font-size:14px}.lg2 i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px}.nn{font-size:24px;min-width:56px;text-align:center}.pr{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto}.sl{gap:28px}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.kp>div{background:var(--sf);border-radius:16px;padding:12px 14px}.kp b{font-size:34px;color:var(--red);font-weight:600;display:block;line-height:1.1}.kp small{color:var(--mut)}
+input[type=range]{accent-color:var(--red);width:100%}.lab{font-size:13px;display:block}
+.st{display:grid;grid-template-columns:34px 1fr 1fr 70px;gap:10px;align-items:center;padding:8px 10px;border-radius:14px;border:1px solid transparent}.st.cur{border-color:var(--gd);background:var(--sf)}
+.st>b{width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center}.pp{font-size:12px;color:var(--mut);text-align:right}
+.sg{margin:0 0 0 44px;height:26px;border-radius:99px;background:var(--sf);position:relative;overflow:hidden}.fl{position:absolute;inset:0 auto 0 0;background:var(--red);border-radius:99px;transition:width .4s}.sg span{position:absolute;inset:0;display:flex;align-items:center;padding:0 12px;font-size:12px;font-weight:500}.sg.mx{outline:2px solid var(--gd)}
+@media(max-width:560px){.st{grid-template-columns:34px 1fr 1fr}.pp{display:none}}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:50px 16px 30px}footer b{color:var(--red)}
+</style>
+</head>
+<body>
+<header><b>● Red Line</b><nav><a href="#s1">ประเภท</a><a href="#s2">ขั้นตอน</a><a href="#s3">5 ส่วน</a><a href="#s4">KPI</a><a href="#s5">Alternative</a></nav><button id="th" aria-label="สลับโหมดสว่าง/มืด">🌙</button></header>
+<div class="hero"><h1>ตารางเดินรถ <em>CTC</em><br>รถไฟฟ้าสายสีแดง</h1><p>เรียนรู้แบบเห็นภาพ · แผนกวางแผนและวิเคราะห์การปฏิบัติการเดินรถ (OPS)</p></div>
+
+<section class="sec" id="s1"><h2><i>01</i>ตารางเดินรถ 2 ประเภท</h2><p class="sub">ข้อมูลเดียวกัน แต่ใช้คนละคน คนละความละเอียด</p>
+<div class="pair">
+<div class="cd"><span class="tg">Public Timetable</span><span class="tg">👥 ผู้โดยสาร</span><b>ตารางเดินรถสาธารณะ</b><div class="mk"><div class="mh">RN01 · กรุงเทพอภิวัฒน์ → รังสิต (นาทีที่ออก)</div><table class="pt" id="pt"></table></div></div>
+<div class="cd"><span class="tg">Working Timetable</span><span class="tg">🧑‍✈️ OCC · สถานี · พนักงาน</span><b>ตารางเดินรถสำหรับปฏิบัติการ</b><div class="mk"><div class="mh">CT-NL · BSG–RST · เวลาถึง–ออกทุกสถานี (ละเอียดถึงวินาที)</div><table class="wt" id="wt"></table></div></div>
+</div></section>
+
+<section class="sec" id="s2"><h2><i>02</i>กว่าจะได้ตารางทั้ง 2 ประเภท</h2><p class="sub">กดเล่นเพื่อดูทีละขั้น</p>
+<div class="cd"><div class="row"><button class="bt" id="fp">▶ เล่นขั้นตอน</button></div><div class="scr"><svg viewBox="0 0 760 410"><defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--red)"/></marker></defs>
+<g class="fs nb" data-s="1"><rect x="230" y="8" width="120" height="40" rx="12"/><text x="290" y="33">Demand</text><rect x="380" y="8" width="150" height="40" rx="12"/><text x="455" y="33">Operation Plan</text><path class="ar" d="M290 48V90M455 48V90"/></g>
+<g class="fs nb" data-s="2"><rect x="30" y="92" width="170" height="52" rx="12"/><text x="115" y="114">Calculate</text><text x="115" y="132">Running Time</text><path class="ar" d="M200 118H266"/><text x="115" y="166" style="font-size:12px;text-anchor:middle">Infrastructure</text><text x="115" y="183" style="font-size:12px;text-anchor:middle">Rolling Stock</text><text x="115" y="200" style="font-size:12px;text-anchor:middle">Signaling</text></g>
+<g class="fs nb f" data-s="3"><rect x="270" y="92" width="220" height="52" rx="12"/><text x="380" y="124">Timetabling</text></g>
+<g class="fs nb" data-s="4"><path class="ar" d="M380 144V170"/><polygon points="380,172 470,215 380,258 290,215"/><text x="380" y="220">Verify</text></g>
+<g class="fs nb" data-s="5"><path class="ar" d="M470 215H620V118H494"/><text x="632" y="172" style="text-anchor:start;fill:var(--red)">Conflict</text></g>
+<g class="fs nb" data-s="6"><path class="ar" d="M380 258V290H300V328M380 290H470V328"/><rect x="230" y="330" width="140" height="52" rx="12" style="fill:var(--red)"/><text x="300" y="352" style="fill:#fff">Working</text><text x="300" y="370" style="fill:#fff">Timetable</text><rect x="400" y="330" width="140" height="52" rx="12" style="fill:var(--red)"/><text x="470" y="352" style="fill:#fff">Public</text><text x="470" y="370" style="fill:#fff">Timetable</text></g>
+<g class="fs nb" data-s="7" style="font-size:12px"><g style="text-anchor:end"><text x="216" y="334" style="text-anchor:end">Operation Control</text><text x="216" y="351" style="text-anchor:end">Station</text><text x="216" y="368" style="text-anchor:end">Train Crew</text><text x="216" y="385" style="text-anchor:end">Maintenance</text><text x="216" y="402" style="text-anchor:end">Rolling Stock</text></g><text x="556" y="345" style="text-anchor:start">Passenger</text><text x="556" y="362" style="text-anchor:start">Social Public</text><text x="556" y="379" style="text-anchor:start">Application</text></g>
+</svg></div><div class="cap" id="fc"></div></div></section>
+
+<section class="sec" id="s3"><h2><i>03</i>เวลาของตารางเดินรถแบ่งออกเป็น 5 ส่วน</h2><p class="sub">กราฟสายเหนือ: แกนตั้ง = สถานี · แกนนอน = เวลา · เส้นเฉียง = ขบวนรถ · จุดสีทอง = ขบวนกำลังวิ่ง</p>
+<div class="cd"><div class="row" id="mb"><button class="bt on" data-m="run">Running</button><button class="bt" data-m="dwell">Dwell</button><button class="bt" data-m="rev">Reversing</button><button class="bt" data-m="travel">Traveling</button><button class="bt" data-m="round">Round</button></div>
+<div class="scr"><svg id="cv" viewBox="0 0 870 410"></svg></div>
+<div class="rb"><div style="flex:26;background:var(--red)">ขาไป 26</div><div style="flex:34;background:#7a0b10">กลับรถรังสิต 34</div><div style="flex:26;background:var(--red)">ขากลับ 26</div><div style="flex:4;background:#7a0b10"></div></div>
+<div class="cap" id="cp"></div></div></section>
+
+<section class="sec" id="s4"><h2><i>04</i>KPI การเดินรถ</h2><p class="sub">ลองลากแถบเพื่อดูว่าตัวเลขเปลี่ยนอย่างไร</p>
+<div class="cd"><b>ตรงต่อเวลา · น่าเชื่อถือ</b>
+<div class="row" style="margin:16px 0 10px"><span class="lab">จำนวนเที่ยวตามตาราง</span><button class="sb" id="nm">−</button><b id="nn" class="nn"></b><button class="sb" id="np">+</button><span class="pr"><button class="bt pn" data-n="20">20</button><button class="bt pn" data-n="50">50</button><button class="bt pn" data-n="100">100</button><button class="bt pn" data-n="200">200</button></span></div>
+<div class="lg2"><span><i style="background:var(--red)"></i>ตรงเวลา <b id="ok"></b></span><span><i style="background:var(--gd)"></i>ล่าช้า <b id="lt2"></b></span><span><i style="border:2px dashed var(--mut)"></i>ยกเลิก <b id="cv2"></b></span></div>
+<div class="dots" id="dt"></div>
+<div class="row sl"><label class="lab" style="flex:1;min-width:220px">ปรับจำนวนเที่ยว <b>ล่าช้า</b><input type="range" id="lt" min="0" max="100" value="12"></label><label class="lab" style="flex:1;min-width:220px">ปรับจำนวนเที่ยว <b>ยกเลิก</b><input type="range" id="cn" min="0" max="100" value="4"></label></div>
+<div class="kp"><div><b id="k1"></b>Punctuality · ตรงต่อเวลา<br><small>คิดจากเที่ยวที่ล่าช้าอย่างเดียว</small><br><small id="f1" style="color:var(--red)"></small></div><div><b id="k2"></b>Availability · ความน่าเชื่อถือ<br><small>คิดจากเที่ยวที่ยกเลิกอย่างเดียว</small><br><small id="f2" style="color:var(--red)"></small></div></div></div>
+<div class="cd" style="margin-top:14px"><div class="row"><b style="flex:1">Load Factor · Line Load</b><button class="bt" id="ro">🎲 สุ่ม</button><button class="bt" id="lp">▶ ขบวนรถวิ่ง</button></div><p class="sub">Load Factor = คนบนรถ ÷ ความจุขบวนรถ (ดูที่หน้ารถ) · Line Load = คนบนรถในแต่ละช่วงสถานี (แถบแดง · เส้นประ = เต็ม 100%) · Max Line Load = ช่วงที่คนมากที่สุด ไม่ได้แปลว่าเต็มเสมอไป · กดปุ่ม − / + ปรับคนขึ้น (↑) และลง (↓) · จุดใต้สถานี 1 จุด = 10% ของความจุ (แดง = ขึ้น · ทอง = ลง)</p><div class="row"><span class="lab">ความจุขบวนรถ (คน)</span><button class="sb" id="cm">−</button><b id="cc" class="nn" style="min-width:76px"></b><button class="sb" id="cplus">+</button><span class="pr"><button class="bt pc2" data-c="100">100</button><button class="bt pc2" data-c="500">500</button><button class="bt pc2" data-c="1000">1,000</button><button class="bt pc2" data-c="1500">1,500</button></span></div><div class="scr"><svg id="lvs" viewBox="0 0 760 372"></svg></div><div class="sp" id="sp"></div></div></section>
+
+<section class="sec" id="s5"><h2><i>05</i>Alternative Plan</h2><p class="sub">เมื่อรางบางช่วงใช้ไม่ได้ (✕) กดเลือกรูปแบบการเดินรถ</p>
+<div class="cd"><div class="row" id="ab"><button class="bt on" data-a="s">Short Loop</button><button class="bt" data-a="b">Bi-Direction</button><button class="bt" data-a="u">Shuttle</button></div>
+<div class="scr"><svg viewBox="0 0 640 190" id="al"><g stroke="var(--mut)" stroke-width="4" fill="none" stroke-linecap="round"><path d="M30 60H610M30 120H610M30 46V134M610 46V134"/><path d="M150 60L175 120M150 120L175 60M215 120L240 60M385 60L410 120M565 60L540 120" stroke-width="3"/></g>
+<g fill="var(--ln)"><rect x="70" y="26" width="40" height="14" rx="4"/><rect x="230" y="26" width="40" height="14" rx="4"/><rect x="390" y="26" width="40" height="14" rx="4"/><rect x="550" y="26" width="40" height="14" rx="4"/><rect x="70" y="138" width="40" height="14" rx="4"/><rect x="230" y="138" width="40" height="14" rx="4"/><rect x="390" y="138" width="40" height="14" rx="4"/><rect x="550" y="138" width="40" height="14" rx="4"/></g>
+<g font-size="14" font-weight="600" text-anchor="middle"><text x="90" y="176">A</text><text x="250" y="176">B</text><text x="410" y="176">C</text><text x="570" y="176">D</text></g><g id="xm" stroke="var(--red)" stroke-width="5" stroke-linecap="round"></g><circle id="sig" cx="442" cy="100" r="7" display="none"/><g id="hp" visibility="hidden" fill="none"></g><g id="tg"></g></svg></div><div class="cap" id="an"></div></div></section>
+<footer>จัดทำโดย <b>แผนกวางแผนและวิเคราะห์การปฏิบัติการเดินรถ (OPS)</b><br>บริษัท รถไฟฟ้า ร.ฟ.ท. จำกัด</footer>
+
+<script>
+var $=function(s){return document.querySelector(s)},$$=function(s){return[].slice.call(document.querySelectorAll(s))},R=document.documentElement;
+function sT(d){R.dataset.theme=d?'dark':'light';$('#th').textContent=d?'☀️':'🌙'}
+sT(false);$('#th').onclick=function(){sT(R.dataset.theme!='dark')};
+/* 1 */
+var P={5:[0,15,30,45],6:[0,15,30,40,50],7:[0,10,20,30,40,50],8:[0,10,20,30,40,50],9:[0,10,20,30,45],10:[0,15,30,45]};
+$('#pt').innerHTML=Object.keys(P).map(function(h){return'<tr><th>'+h+'</th><td>'+P[h].map(function(m){return'<i>'+('0'+m).slice(-2)+'</i>'}).join('')+'</td></tr>'}).join('');
+var W=[[1007,'5:35:00','5:50:00','6:00:00','6:03:15','6:04:05','6:05:50'],[1011,'–','–','6:30:00','6:33:15','6:34:05','6:35:50'],[1013,'6:20:00','6:35:00','6:45:00','6:48:15','6:49:05','6:50:50'],[1015,'–','–','7:00:00','7:03:15','7:04:05','7:05:50']];
+$('#wt').innerHTML='<tr><th>ขบวน</th><th>CTD ออก</th><th>BSG ถึง</th><th>BSG ออก</th><th>CTK ถึง</th><th>CTK ออก</th><th>WSN ถึง</th></tr>'+W.map(function(r){return'<tr>'+r.map(function(c){return'<td>'+c+'</td>'}).join('')+'</tr>'}).join('');
+/* 2 */
+var CP=['เริ่มจากความต้องการเดินทาง (Demand) และแผนการเดินรถ','คำนวณเวลาวิ่ง จากโครงสร้างพื้นฐาน ขบวนรถ และระบบสัญญาณ','นำมาจัดตารางเดินรถ (Timetabling)','ตรวจสอบตาราง (Verify)','ถ้าชนกัน/เวลาไม่ลงตัว (Conflict) ย้อนกลับไปแก้','ผ่านแล้ว ได้ตารางเดินรถ 2 ประเภท','Working → OCC สถานี พนักงาน ซ่อมบำรุง ขบวนรถ · Public → ผู้โดยสาร สังคม Application'],pl=0,iv;
+function fs(n){$$('.fs').forEach(function(g){var s=+g.dataset.s;g.style.opacity=s>n?.12:1;g.classList.toggle('on',!!pl&&s==n)});$('#fc').textContent=pl?CP[n-1]:'กด ▶ เพื่อดูทีละขั้น'}
+$('#fp').onclick=function(){if(pl){pl=0;clearInterval(iv);$('#fp').textContent='▶ เล่นขั้นตอน';fs(7);return}pl=1;$('#fp').textContent='⏸ หยุด';var n=1;fs(1);iv=setInterval(function(){n=n>=7?1:n+1;fs(n)},3200)};fs(7);
+/* 3 */
+var K=7.4,L=76,Yv=function(v){return 82+v*30},Xt=function(t){return L+t*K};
+var nm=['กรุงเทพฯ','จตุจักร','วัดเสมียนฯ','บางเขน','ทุ่งสองห้อง','หลักสี่','การเคหะ','ดอนเมือง','หลักหก','รังสิต'],U=[195,105,70,85,150,90,110,220,170],D=[165,230,105,90,150,85,70,125,190],pc=[],MP=[];
+function trip(a,i,st,d,t){var sc=1560/(a.reduce(function(x,y){return x+y})+240);for(var j=0;j<9;j++){var t2=t+a[j]*sc/60,i2=i+st;pc.push({ty:'run',s:a[j],p:[[t,i],[t2,i2]]});t=t2;i=i2;if(j<8){t2=t+30*sc/60;pc.push({ty:'dwell',p:[[t,i],[t2,i]]});t=t2}}return t}
+trip(U,0,1,'u',0);pc.push({ty:'rev',p:[[26,9],[29,9.9],[56,9.9],[59,9],[60,9]]});trip(D,9,-1,'d',60);pc.push({ty:'rev',p:[[86,0],[86.8,-.8],[89.2,-.8],[90,0]]});
+pc.forEach(function(s){s.p.forEach(function(q){MP.push(q)})});
+function pts(a,o){return a.map(function(q){return(Xt(q[0])+(o||0)).toFixed(1)+','+Yv(q[1]).toFixed(1)}).join(' ')}
+function brk(a,b,t){var x1=Xt(a),x2=Xt(b),m=(x1+x2)/2;return'<path class="br" d="M'+x1+' 40V30H'+x2+'V40"/><g class="pl"><rect x="'+(m-62)+'" y="12" width="124" height="24"/><text x="'+m+'" y="29">'+t+'</text></g>'}
+function pill(x,y,t,w){return'<g class="pl"><rect x="'+(x-w/2)+'" y="'+(y-14)+'" width="'+w+'" height="26"/><text x="'+x+'" y="'+(y+4)+'">'+t+'</text></g>'}
+var h='';for(var i=0;i<10;i++)h+='<path d="M'+L+' '+Yv(i)+'H860" stroke="var(--ln)"/><text x="70" y="'+(Yv(i)+4)+'" font-size="10.5" text-anchor="end">'+nm[i]+'</text>';
+for(var m=0;m<=105;m+=5)h+='<path d="M'+Xt(m)+' 52V360" stroke="var(--ln)" stroke-width="'+(m%15?.5:1.2)+'"/>'+(m%15?'':'<text x="'+Xt(m)+'" y="64" font-size="10" text-anchor="middle" fill="var(--mut)">'+m+'</text>');
+h+='<text x="862" y="66" font-size="10" fill="var(--mut)" text-anchor="end">นาที</text><clipPath id="cl"><rect x="'+L+'" y="50" width="800" height="340"/></clipPath><g clip-path="url(#cl)">';
+for(var k=-6;k<=6;k++)if(k)h+='<polyline class="gh" points="'+pts(MP,k*15*K)+'"/>';
+h+='</g>';pc.forEach(function(s){h+='<polyline class="pc" data-t="'+s.ty+'" points="'+pts(s.p)+'"/>';if(s.ty=='dwell')h+='<circle class="dw" cx="'+Xt((s.p[0][0]+s.p[1][0])/2)+'" cy="'+Yv(s.p[0][1])+'" r="2.5" fill="var(--red)"/>'});
+var rl='',dl2='';pc.forEach(function(s){var a=s.p[0],b=s.p[1],mx=Xt((a[0]+b[0])/2),my=Yv((a[1]+b[1])/2),up=a[0]<60;if(s.ty=='run')rl+='<text class="rt" x="'+(up?mx-5:mx+5)+'" y="'+(my+3)+'" text-anchor="'+(up?'end':'start')+'">'+Math.floor(s.s/60)+':'+('0'+s.s%60).slice(-2)+'</text>';if(s.ty=='dwell')dl2+='<text class="rt" x="'+(up?mx+9:mx-9)+'" y="'+(my+(up?14:-7))+'" text-anchor="'+(up?'start':'end')+'" style="fill:var(--red);font-weight:600">30 วิ</text>'});
+h+='<g class="lb" data-m="run">'+pill(Xt(8),382,'Running Time ระหว่างสถานี (นาที:วินาที)',250)+rl+'</g><g class="lb" data-m="dwell">'+pill(Xt(8),382,'Dwell Time = หยุดจอดรับ–ส่งผู้โดยสาร',250)+dl2+'</g><g class="lb" data-m="rev">'+pill(Xt(43),345,'Reversing 34 นาที (Pocket Track รังสิต)',250)+pill(Xt(88),Yv(-.8)-16,'4 นาที',60)+'</g><g class="lb" data-m="travel">'+brk(0,26,'Traveling 26 นาที')+brk(60,86,'Traveling 26 นาที')+'</g><g class="lb" data-m="round">'+brk(0,90,'Round Time 90 นาที')+'</g><g class="pl" id="dl" style="display:none"><rect x="-100" y="-38" width="200" height="26"/><text y="-21" style="fill:var(--red);font-weight:600">จอดรับ–ส่งผู้โดยสาร 30 วินาที</text></g><circle id="dot" r="7" fill="var(--gd)" stroke="var(--cd)" stroke-width="2"/><text id="ck" x="860" y="400" font-size="12" text-anchor="end" fill="var(--mut)"></text>';
+$('#cv').innerHTML=h;var M='run',TL=[],TT=1;function tlb(){TL=[];var c=0;pc.forEach(function(s){for(var j=0;j<s.p.length-1;j++){var a=s.p[j],b=s.p[j+1],d=s.ty=='dwell'&&M=='dwell'?1.2:(b[0]-a[0])*.22;TL.push({a:a,b:b,s:c,e:c+d,ty:s.ty});c+=d}});TT=c}
+var CPT={run:'Running Time: เวลาวิ่งระหว่างสถานี (เส้นเฉียง) ตัวเลขบนเส้นคือเวลาแต่ละช่วง นาที:วินาที ตามตาราง (ซ้าย = ขาไป · ขวา = ขากลับ)',dwell:'Dwell Time: ขบวนหยุดจอดรับ–ส่งผู้โดยสาร สถานีละ 30 วินาที (จุดแดงกระพริบ) ดูจุดทองที่หยุดตามสถานี',rev:'Reversing Time: ตั้งแต่ถึงปลายทางจนออกไปทิศตรงข้าม — รังสิตเข้า Pocket Track 34 นาที · กลางบางซื่อ Change Cab 4 นาที',travel:'Traveling Time: ต้นทางถึงปลายทาง (วิ่ง + จอดทุกสถานี) ≈ 26 นาทีต่อทิศทาง',round:'Round Time = 26 + 34 + 26 + 4 = 90 นาที · Headway 15 นาที → ใช้ 6 ขบวน (90 ÷ 15)'};
+function md(m){M=m;tlb();$$('#mb .bt').forEach(function(b){b.classList.toggle('on',b.dataset.m==m)});$$('#cv .pc').forEach(function(e){var t=e.dataset.t,hi=m=='round'||(m=='travel'&&t!='rev')||m==t;e.setAttribute('class','pc '+(hi?'hi':'lo'))});
+$$('#cv .dw').forEach(function(e){var d=m=='dwell';e.setAttribute('r',d?7:2.5);e.setAttribute('class',d?'dw bl':'dw')});$$('#cv .lb').forEach(function(g){g.style.display=g.dataset.m==m?'':'none'});
+$$('.rb div').forEach(function(d,i){d.classList.toggle('lo',!(m=='round'||(m=='rev'?i%2:!(i%2))))});$('#cp').textContent=CPT[m]}
+$$('#mb .bt').forEach(function(b){b.onclick=function(){md(b.dataset.m)}});md('run');
+/* 4 */
+var NT=100;
+function pf(x){return Math.round(x*1000)/10+'%'}
+function kp(){var c=Math.min(+$('#cn').value,NT);$('#cn').max=NT;$('#lt').max=NT-c;var l=Math.min(+$('#lt').value,NT-c);$('#lt').value=l;$('#cn').value=c;
+$('#lt2').textContent=l+' เที่ยว';$('#cv2').textContent=c+' เที่ยว';$('#ok').textContent=(NT-c-l)+' เที่ยว';$('#nn').textContent=NT;
+var cols=NT<=20?10:NT<=50?15:NT<=100?20:25,w=($('#dt').clientWidth||800)/cols,h='';
+for(var i=0;i<NT;i++)h+='<i class="'+(i<c?'c':i<c+l?'l':'')+'">'+(i<c?'ยกเลิก':i<c+l?'ล่าช้า':'')+'</i>';
+var d=$('#dt');d.innerHTML=h;d.style.gridTemplateColumns='repeat('+cols+',1fr)';d.style.setProperty('--f',Math.max(7,Math.min(14,w*.25))+'px');d.classList.toggle('nt',w<27);
+$('#k1').textContent=pf((NT-l)/NT);$('#k2').textContent=pf((NT-c)/NT);$('#f1').textContent='('+NT+' − '+l+') ÷ '+NT+' = '+pf((NT-l)/NT);$('#f2').textContent='('+NT+' − '+c+') ÷ '+NT+' = '+pf((NT-c)/NT);$$('.pn').forEach(function(b){b.classList.toggle('on',+b.dataset.n==NT)})}
+$('#lt').oninput=$('#cn').oninput=kp;$('#nm').onclick=function(){NT=Math.max(10,NT-10);kp()};$('#np').onclick=function(){NT=Math.min(300,NT+10);kp()};
+$$('.pn').forEach(function(b){b.onclick=function(){NT=+b.dataset.n;kp()}});addEventListener('resize',kp);kp();
+var X=[70,225,380,535,690],SN='ABCDE',B=[60,25,35,20,0],A=[0,10,20,35,0],CAP=100,tm;
+function cp(){var l=0,al=[],ld=[],mx=0,mi=0;for(var i=0;i<5;i++){var a=i==4?l:Math.min(A[i],l);al.push(a);l=l-a+B[i];if(i<4){ld.push(l);if(l>mx){mx=l;mi=i}}}return{al:al,ld:ld,mx:mx,mi:mi}}
+function pd(x,n,y,c){var r='';for(var j=0;j<n;j++)r+='<circle cx="'+(x+(j-(n-1)/2)*8)+'" cy="'+y+'" r="3" style="fill:'+c+'"/>';return r}
+function lv(tr){var o=cp(),h='<path d="M30 150H730" stroke="var(--ln)" stroke-width="6" stroke-linecap="round"/>';
+o.ld.forEach(function(l,i){h+='<rect x="'+(X[i]+18)+'" y="185" width="'+(X[i+1]-X[i]-36)+'" height="80" rx="16" style="fill:none;stroke:var(--mut);stroke-width:1.2;stroke-dasharray:4 4;opacity:.7"/>';var hh=Math.max(6,Math.min(l/CAP*100,130)*.8),x1=X[i]+18,w=X[i+1]-X[i]-36,hi=l==o.mx&&l>0;h+='<rect x="'+x1+'" y="'+(225-hh/2)+'" width="'+w+'" height="'+hh+'" rx="'+Math.min(16,hh/2)+'" style="fill:var(--red);opacity:'+(.25+.6*Math.min(1,l/CAP))+(hi?';stroke:var(--gd);stroke-width:3':'')+'"/><text x="'+(x1+w/2)+'" y="229" text-anchor="middle" font-size="13" font-weight="600" style="fill:'+(l/CAP>.45?'#fff':'var(--ink)')+'">'+l+' คน · '+Math.round(l/CAP*100)+'%</text>'+(hi?'<text x="'+(x1+w/2)+'" y="'+(Math.min(225-hh/2,185)-10)+'" text-anchor="middle" font-size="12" style="fill:var(--gd)">MAX LINE LOAD</text>':'')});
+for(var i=0;i<5;i++){var x=X[i];h+='<circle cx="'+x+'" cy="150" r="'+(tr&&tr.st==i?18:14)+'" style="fill:var(--red)"/><text x="'+x+'" y="155" text-anchor="middle" font-size="14" font-weight="600" style="fill:#fff">'+SN[i]+'</text><text x="'+x+'" y="300" text-anchor="middle" font-size="14" style="fill:var(--red)">'+(i<4?'↑ ขึ้น '+B[i]:'')+'</text><text x="'+x+'" y="320" text-anchor="middle" font-size="14" style="fill:var(--gd)">'+(i?'↓ ลง '+o.al[i]:'')+'</text>'+pd(x,Math.ceil(B[i]/(CAP/10)),338,'var(--red)')+pd(x,Math.ceil(o.al[i]/(CAP/10)),352,'var(--gd)')}
+var t=tr||{x:X[0],l:0},n=Math.round(Math.min(t.l/CAP,1)*10),ov=t.l>CAP;
+h+='<g transform="translate('+t.x+',100)"><text y="-42" text-anchor="middle" font-size="11" style="fill:'+(ov?'#e11':'var(--mut)')+'">'+(ov?'แออัด!':'Load Factor')+' ('+t.l+' คน)</text><text y="-18" text-anchor="middle" font-size="24" font-weight="600" style="fill:'+(ov?'#e11':'var(--red)')+'">'+Math.round(t.l/CAP*100)+'%</text><path d="M62 -3L100 -14V14L62 3z" style="fill:var(--gd);opacity:.3"/><rect x="-62" y="-16" width="124" height="34" rx="15" style="fill:var(--cd);stroke:var(--red);stroke-width:2.5"/>';
+for(var i=0;i<10;i++)h+='<circle cx="'+(-45+i*10)+'" cy="1" r="3.6" style="fill:'+(i<n?'var(--red)':'var(--ln)')+'"/>';
+h+='<circle cx="60" cy="1" r="5" style="fill:var(--gd)"/>'+'</g>';
+if(tr&&tr.pp){var px=Math.max(90,Math.min(670,tr.x));h+='<rect x="'+(px-85)+'" y="2" width="170" height="26" rx="13" style="fill:var(--cd);stroke:var(--gd);stroke-width:1.5"/><text x="'+px+'" y="20" text-anchor="middle" font-size="13" font-weight="600" style="fill:var(--ink)">'+tr.pp+'</text>'}
+$('#lvs').innerHTML=h}
+$('#sp').innerHTML=SN.split('').map(function(s,i){function g(k,ic,id){return'<div>'+ic+' <button class="sb" data-k="'+k+'" data-i="'+i+'" data-d="-1">−</button><em id="'+id+i+'"></em><button class="sb" data-k="'+k+'" data-i="'+i+'" data-d="1">+</button></div>'}return'<div class="sc"><b>'+s+'</b>'+(i<4?g('B','↑','nb'):'<div>↑ —</div>')+(i&&i<4?g('A','↓','na'):i?'<div>↓ ทั้งหมด <em id="na4"></em></div>':'<div>↓ —</div>')+'</div>'}).join('');
+function up(){var o=cp();$('#cc').textContent=CAP;$$('.pc2').forEach(function(b){b.classList.toggle('on',+b.dataset.c==CAP)});lv({x:X[0],l:0,st:0});for(var i=0;i<5;i++){var e=$('#nb'+i),f=$('#na'+i);if(e)e.textContent=B[i];if(f)f.textContent=o.al[i]}}
+$('#sp').onclick=function(e){var b=e.target.closest('button');if(!b)return;clearInterval(tm);var a=b.dataset.k=='B'?B:A,i=+b.dataset.i;a[i]=Math.max(0,Math.min(CAP,a[i]+(+b.dataset.d)*Math.max(1,Math.round(CAP/20))));up()};
+$('#ro').onclick=function(){clearInterval(tm);for(var i=0;i<5;i++){B[i]=i<4?Math.floor(Math.random()*(CAP+1)):0;A[i]=i&&i<4?Math.floor(Math.random()*(CAP+1)):0}up()};
+$('#lp').onclick=function(){clearInterval(tm);var k=-20;tm=setInterval(function(){var o=cp(),tr;if(k<0)tr={x:X[0],l:o.ld[0],st:0,pp:'ขึ้น '+B[0]};else{var sg=Math.min(3,Math.floor(k/50)),w=k-sg*50;if(w<30)tr={x:X[sg]+(X[sg+1]-X[sg])*w/30,l:o.ld[sg]};else{var st=sg+1;tr={x:X[st],l:st<4?o.ld[st]:0,st:st,pp:'ลง '+o.al[st]+(st<4?' · ขึ้น '+B[st]:'')}}}lv(tr);if(++k>=200){clearInterval(tm);up()}},50)};
+function setCap(n){n=Math.max(50,Math.min(3000,n));var r=n/CAP;for(var i=0;i<5;i++){B[i]=Math.round(B[i]*r);A[i]=Math.round(A[i]*r)}CAP=n;clearInterval(tm);up()}
+$('#cm').onclick=function(){setCap(CAP-50)};$('#cplus').onclick=function(){setCap(CAP+50)};$$('.pc2').forEach(function(b){b.onclick=function(){setCap(+b.dataset.c)}});up();
+/* 5 */
+var AL={s:{T:14.5,x:490,n:'Short Loop: วิ่งวนช่วงสั้น A→C ข้าม Crossover ไปกลับรถ แล้ววิ่งกลับอีกราง วนต่อเนื่อง ไม่เข้าช่วงที่เสีย',d:['M100 60H385','M385 60L410 120','M410 120H175','M175 120L150 60','M150 60H100'],k:[[0,0],[4.4,1],[5.5,2],[6.7,2],[10.6,3],[11.7,4],[12.5,5],[14.5,5]],lb:{2:'กลับรถ',5:'กลับรถ'},ph:[0,7.25]},
+b:{T:31,x:320,sig:1,n:'Bi-Direction: ช่วง B–C เหลือรางเดียวใช้ทั้งสองทิศ ขบวนที่ถึงก่อนผ่านไปก่อน อีกขบวนหยุดรอที่ทางหลีก (สัญญาณแดง) รอทางว่างจึงออก แล้ววิ่งไปกลับต่อเนื่อง',d:['M80 120H150','M150 120L175 60','M175 60H225','M225 60H385','M385 60H590','M590 60H565','M565 60L540 120','M540 120H425','M425 120H410','M410 120L385 60','M385 60H240','M240 60L215 120','M215 120H80'],k:[[0,0],[1.2,1],[2.3,2],[3.2,3],[5.8,4],[9.3,5],[11.3,5],[11.7,6],[12.9,7],[14.8,8],[21.8,8],[22.05,9],[23.2,10],[25.6,11],[26.8,12],[29,13],[31,13]],lb:{5:'กลับรถ',8:'รอทาง',13:'กลับรถ'},ph:[0,15.5]},
+u:{T:9,x:490,n:'Shuttle: ใช้รถ 1 ขบวนวิ่งไป–กลับช่วงสั้น C↔D ที่ยังใช้ได้ กลับรถที่ปลายทางทั้งสองฝั่ง',d:['M410 60H570'],k:[[0,0],[3,1],[4.5,1],[7.5,0],[9,0]],lb:{0:'กลับรถ',1:'กลับรถ'},ph:[0]}},am='s',te=[];
+function am_(m){am=m;var o=AL[m];$$('#ab .bt').forEach(function(b){b.classList.toggle('on',b.dataset.a==m)});$('#an').textContent=o.n;$('#xm').innerHTML='<path d="M'+(o.x-9)+' 111l18 18M'+(o.x+9)+' 111l-18 18"/>';$('#sig').setAttribute('display',o.sig?'':'none');
+$('#hp').innerHTML=o.d.map(function(d){return'<path d="'+d+'"/>'}).join('');o.pe=$$('#hp path');o.cg=[];o.c=[0];o.pe.forEach(function(p){o.c.push(o.c[o.c.length-1]+p.getTotalLength())});
+$('#tg').innerHTML=o.ph.map(function(_,i){return'<g class="tn"><g><path d="M21 -4L60 -15V15L21 4z" style="fill:#ffd36a;opacity:.35"/><rect x="-23" y="-8" width="44" height="16" rx="7" style="fill:'+(i?'var(--gd)':'var(--red)')+'"/><rect x="-16" y="-4" width="8" height="5" rx="1.5" fill="#fff"/><rect x="-4" y="-4" width="8" height="5" rx="1.5" fill="#fff"/><circle cx="19" cy="0" r="3" fill="#fff6c8"/></g><text y="-16" font-size="11" font-weight="600" text-anchor="middle" style="fill:var(--red)"></text></g>'}).join('');te=$$('#tg .tn')}
+$$('#ab .bt').forEach(function(b){b.onclick=function(){am_(b.dataset.a)}});am_('s');
+function tick(ts){var s=ts/1000,ph=s%TT,i=0;while(i<TL.length-1&&TL[i].e<ph)i++;var g=TL[i],f=(ph-g.s)/((g.e-g.s)||1),tm=g.a[0]+(g.b[0]-g.a[0])*f,cy=Yv(g.a[1]+(g.b[1]-g.a[1])*f),cx=Xt(tm),d=$('#dot'),dw=g.ty=='dwell'&&M=='dwell',dl=$('#dl');
+d.setAttribute('cx',cx);d.setAttribute('cy',cy);d.style.fill=dw?'var(--red)':'var(--gd)';d.style.opacity=dw?.35+.65*Math.abs(Math.sin(s*9)):1;dl.style.display=dw?'':'none';dl.setAttribute('transform','translate('+cx+','+cy+')');$('#ck').textContent='นาทีที่ '+Math.floor(tm);
+var o=AL[am],w1=0;o.ph.forEach(function(p,n){var tt=(s+p)%o.T,k=o.k,j=0;while(j<k.length-2&&k[j+1][0]<tt)j++;var fr=(tt-k[j][0])/((k[j+1][0]-k[j][0])||1),c=o.c,dd=c[k[j][1]]+(c[k[j+1][1]]-c[k[j][1]])*fr,q=0;while(q<o.pe.length-1&&c[q+1]<dd)q++;var pe=o.pe[q],ln=pe.getTotalLength(),l=Math.max(0,Math.min(dd-c[q],ln)),a=pe.getPointAtLength(l),p1=pe.getPointAtLength(Math.max(l-1,0)),p2=pe.getPointAtLength(Math.min(l+1,ln)),wt=k[j][1]==k[j+1][1],bk=wt?(j>0&&k[j-1][1]>k[j][1]):k[j+1][1]<k[j][1],lb=wt&&o.lb[k[j][1]],ag=Math.atan2(p2.y-p1.y,p2.x-p1.x)+((bk!=(lb=='กลับรถ'&&tt>(k[j][0]+k[j+1][0])/2))?Math.PI:0),e=te[n];
+e.setAttribute('transform','translate('+a.x+','+a.y+')');var cg=o.cg[n]==null?ag:o.cg[n],df=Math.atan2(Math.sin(ag-cg),Math.cos(ag-cg));cg=Math.abs(df)>2.5?ag:cg+df*.2;o.cg[n]=cg;e.firstChild.setAttribute('transform','rotate('+cg*180/Math.PI+')');e.lastChild.textContent=lb||'';if(lb=='รอทาง')w1=1});
+if(o.sig)$('#sig').style.fill=w1?'#e11':'#2a9d5c';requestAnimationFrame(tick)}
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
